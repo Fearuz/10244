@@ -1,0 +1,4 @@
+    set #aazef findcolor (4 40 23 61 1 1 ("220", "178", "255", "139", "8421631" ) %arr )
+    if #aazef > 0 and 245, 373 6974057
+        send F2
+        end_if

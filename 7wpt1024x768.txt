@@ -1,0 +1,259 @@
+///throw loot
+proc lootdrop
+:drawp
+set #aqwe findcolor (684 19 826 626 1 1 ("15851225") %arr )
+if #aqwe > 0 // if color is found
+move_smooth %arr [1 1] %arr [1 2] // move the cursor to the first color found
+wait 50
+kleft_down %arr [1 1] %arr [1 2] // move the cursor to the first color found
+wait 50
+if #aqwe > 0
+move_smooth 421, 203 abs
+kleft_up 421, 203 abs
+while #aqwe > 0
+goto drawp
+end_if
+end_if
+end_while
+end_if
+end_proc
+
+/// wait attacking
+
+proc waitatkwhilehunt
+:retarget
+set #a findcolor (4 40 23 61 1 1 ("220", "178", "255", "139", "8421631","0" ) %arr )
+set #c findcolor (26 56 152 63 1 1 ("49152", "6340704", "49344", "3158208", "192", "96","0") %arr )
+set #ca  #c #a
+if 12 51 4671303
+end_script
+else
+if #ca > 0 //color is found on battlelist already attacked
+wait 1000
+if #ca > 0
+goto retarget
+else
+wait #ca
+end_script
+end_if
+end_if
+end_if
+end_proc
+
+/// wait looting
+
+proc waitlooting
+:redo
+set #aazef findcolor (4 40 23 61 1 1 ("220", "178", "255", "139", "8421631" ) %arr ) /// red on battle atked monster
+set #ao findcolor (308 157 383 178 1 1 (15790320) %arr ) /// The white text on the middle of the screen saying monster dropped some loot
+if #ao > 0 and #aazef > 0
+wait 2000
+goto redo
+else
+wait 5
+end_if
+end_proc
+
+ /// wpt blue check mark
+
+:pos1
+:clickblue
+wait 300
+call waitatkwhilehunt
+set #aa findcolor (856 3 961 110 1 1 (16715535 ) %arr ) /// Finding blue check mark ( if not on it)
+if #aa > 0 and 12 51 4671303  /// battle list (no monsters)
+call waitatkwhilehunt
+call waitlooting
+call lootdrop
+kleft %arr [1 1] %arr [1 2]
+call waitatkwhilehunt
+else
+goto clickblue
+end_if
+end_if
+
+set #a findcolor (907 55 915 64 1 1 (16715535) %arr ) /// Position check blue question mark [ if you're standing on right spot]
+if #a > 0 /// if #a (color is true)
+goto pos2 ///click the next waypoint
+else
+call waitatkwhilehunt
+call waitlooting
+call lootdrop
+goto clickblue
+end_if
+
+
+
+///wpt green check mark
+:pos2
+:clickgreen
+wait 500
+call waitatkwhilehunt
+set #aab findcolor (856 3 961 110 1 1 (5754436 ) %arr ) /// Finding green check mark ( if not on it)
+if #aab > 0 and 12 51 4671303  /// battle list (no monsters)
+call waitatkwhilehunt
+call waitlooting
+call lootdrop
+kleft %arr [1 1] %arr [1 2]
+    call waitatkwhilehunt
+    else
+goto clickgreen
+end_if
+end_if
+
+
+call waitatkwhilehunt
+set #ab findcolor (907 55 915 64 1 1 (5754436 ) %arr ) /// Green check mark [ if you're standing on right spot]
+if #ab > 0 /// if #a (color is true) and battle list (no monsters)
+goto pos3 ///click the next waypoint
+else
+call waitatkwhilehunt
+call waitlooting
+goto clickgreen
+end_if
+
+///wpt3 red waypoint
+:pos3
+:clickred
+wait 500
+call waitatkwhilehunt
+set #aac findcolor (856 3 961 110 1 1 (230 ) %arr ) /// Finding green check mark ( if not on it)
+if #aac > 0 and 12 51 4671303  /// battle list (no monsters)
+call waitatkwhilehunt
+call waitlooting
+call lootdrop
+kleft %arr [1 1] %arr [1 2]
+    call waitatkwhilehunt
+    else
+goto clickred
+end_if
+end_if
+
+
+call waitatkwhilehunt
+set #ac findcolor (907 55 915 64 1 1 (230 ) %arr ) /// Green check mark [ if you're standing on right spot]
+if #ac > 0 /// if #a (color is true) and battle list (no monsters)
+goto pos4 ///click the next waypoint
+else
+call waitatkwhilehunt
+call waitlooting
+goto clickred
+end_if
+
+
+///wpt4 orange waypoint
+:pos4
+:clickorange
+wait 500
+call waitatkwhilehunt
+set #aad findcolor (856 3 961 110 1 1 (1873143  ) %arr ) /// Finding green check mark ( if not on it)
+if #aad > 0 and 12 51 4671303  /// battle list (no monsters)
+call waitatkwhilehunt
+call waitlooting
+call lootdrop
+kleft %arr [1 1] %arr [1 2]
+call waitatkwhilehunt
+else
+goto clickorange
+end_if
+end_if
+
+
+call waitatkwhilehunt
+set #ad findcolor (907 55 915 64 1 1 (1873143  ) %arr ) /// Green check mark [ if you're standing on right spot]
+if #ad > 0 /// if #a (color is true) and battle list (no monsters)
+goto pos5 ///click the next waypoint
+else
+call waitatkwhilehunt
+call waitlooting
+goto clickorange
+end_if
+
+///waypoint 5 darkred
+:pos5
+:clickdarkred
+wait 500
+call waitatkwhilehunt
+set #aae findcolor (856 3 961 110 1 1 (1118634 ) %arr ) /// Finding green check mark ( if not on it)
+if #aae > 0 and 12 51 4671303  /// battle list (no monsters)
+call waitatkwhilehunt
+call waitlooting
+call lootdrop
+kleft %arr [1 1] %arr [1 2]
+    call waitatkwhilehunt
+    else
+goto clickdarkred
+end_if
+end_if
+
+
+call waitatkwhilehunt
+set #ae findcolor (907 55 915 64 1 1 (1118634  ) %arr ) /// Green check mark [ if you're standing on right spot]
+if #ae > 0 /// if #a (color is true) and battle list (no monsters)
+goto pos6 ///click the next waypoint
+else
+call waitatkwhilehunt
+call waitlooting
+goto clickdarkred
+end_if
+
+:pos6
+///wpt6 yellow waypoint
+
+:clickyellow
+wait 500
+call waitatkwhilehunt
+set #aaf findcolor (856 3 961 110 1 1 (1500908 ) %arr ) /// Finding green check mark ( if not on it)
+if #aaf > 0 and 12 51 4671303  /// battle list (no monsters)
+call waitatkwhilehunt
+call waitlooting
+call lootdrop
+kleft %arr [1 1] %arr [1 2]
+    call waitatkwhilehunt
+    else
+goto clickyellow
+end_if
+end_if
+
+
+call waitatkwhilehunt
+set #af findcolor (907 55 915 64 1 1 (1500908 ) %arr ) /// Green check mark [ if you're standing on right spot]
+if #af > 0 /// if #a (color is true) and battle list (no monsters)
+goto pos7 ///click the next waypoint
+else
+call waitatkwhilehunt
+call waitlooting
+goto clickyellow
+end_if
+
+///waypoint 7 darkgreen waypoint
+
+:pos7
+:clickdarkgreen
+wait 500
+call waitatkwhilehunt
+set #aag findcolor (856 3 961 110 1 1 (3451448 ) %arr ) /// Finding green check mark ( if not on it)
+if #aag > 0 and 12 51 4671303  /// battle list (no monsters)
+call waitatkwhilehunt
+call waitlooting
+call lootdrop
+kleft %arr [1 1] %arr [1 2]
+    call waitatkwhilehunt
+    else
+goto clickdarkgreen
+end_if
+end_if
+
+
+call waitatkwhilehunt
+set #ag findcolor (907 55 915 64 1 1 (3451448 ) %arr ) /// Green check mark [ if you're standing on right spot]
+if #ag > 0 /// if #a (color is true) and battle list (no monsters)
+goto pos1 ///click the next waypoint
+else
+call waitatkwhilehunt
+call waitlooting
+goto clickdarkgreen
+end_if
+
+
+
